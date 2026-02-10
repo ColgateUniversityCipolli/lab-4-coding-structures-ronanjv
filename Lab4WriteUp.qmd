@@ -343,6 +343,7 @@ Open `Menu.qmd` and add code to complete the following.
 
 When you render this document, no code should be visible. Instead, you should see a five-page document as described above.
 
+
 # Describe your work!
 
 ## Why a fake website?

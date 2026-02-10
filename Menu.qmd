@@ -84,20 +84,104 @@ dinner <- c("website/AfricanPeanutSoup.html",
             "website/Shakshuka.html")
 ```
 
+```{r}
+#| include: false
+library("rvest")
+recipes = data.frame(
+  recipe = c(sample(dinner, 3), sample(breakfasts, 1)))
+
+title.list <- list()
+ingredients.list <- list()
+instructions.list <- list()
+image.list         <- list()
+
+for (i in 1:nrow(recipes)) {
+  recipe.item <- read_html(recipes$recipe[i])
+  ingredients.section <- html_element(recipe.item, "#ingredients")
+  ingredients <- html_elements(ingredients.section, "li") |>
+    html_text(trim = TRUE)
+  
+  title.list[[i]] <-  html_element(recipe.item, "h1") |> html_text()
+  ingredients.list[[i]] <- ingredients
+
+  instructions.section <- html_element(recipe.item, "#instructions")
+  instructions <- html_elements(instructions.section, "li") |>
+    html_text(trim = TRUE)
+  
+  instructions.list[[i]] <- instructions
+
+  img <- html_element(recipe.item, "img")
+  img.src <- html_attr(img, "src")
+  image.list[[i]] <- paste0("website/", img.src)
+}
+```
+
 # Ingredients
+```{r}
+#| echo: false
+ingredients.list
+```
 
 \newpage
 
 # Recipe One
+```{r}
+#| echo: false
+#| results: 'asis'
+# width="50%" shrinks the image for printing
+image.url = image.list[[1]]
+cat(paste('![', title.list[[1]], '](', image.url, "){width=50%}"))
+```
+```{r}
+#| echo: false
+ingredients.list[[1]]
+instructions.list[[1]]
+```
 
 \newpage
 
 # Recipe Two
+```{r}
+#| echo: false
+#| results: 'asis'
+# width="50%" shrinks the image for printing
+image.url = image.list[[2]]
+cat(paste('![', title.list[[2]], '](', image.url, "){width=50%}"))
+```
+```{r}
+#| echo: false
+ingredients.list[[2]]
+instructions.list[[2]]
+```
 
 \newpage
 
 # Recipe Three
+```{r}
+#| echo: false
+#| results: 'asis'
+# width="50%" shrinks the image for printing
+image.url = image.list[[3]]
+cat(paste('![', title.list[[3]], '](', image.url, "){width=50%}"))
+```
+```{r}
+#| echo: false
+ingredients.list[[3]]
+instructions.list[[3]]
+```
 
 \newpage
 
 # Breakfast Recipe
+```{r}
+#| echo: false
+#| results: 'asis'
+# width="50%" shrinks the image for printing
+image.url = image.list[[4]]
+cat(paste('![', title.list[[4]], '](', image.url, "){width=50%}"))
+```
+```{r}
+#| echo: false
+ingredients.list[[4]]
+instructions.list[[4]]
+```
