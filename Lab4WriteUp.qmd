@@ -130,8 +130,18 @@ df[5,]
 ## Part e
 Ask for the the value of `x1` in the fifth row of the data frame.
 
+**Solution**
+```{r}
+df[5,1]
+```
+
 ## Part f
 Ask for the the value of in the third column and the fifth row of the data frame.
+
+**Solution**
+```{r}
+df[5,3]
+```
 
 ## Part g
 Create a sequence from 1 to 10 by 2 and use it to print the odd rows of the data frame.
