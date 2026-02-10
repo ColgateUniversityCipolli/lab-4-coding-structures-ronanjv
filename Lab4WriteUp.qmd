@@ -261,11 +261,27 @@ ingredients.section = html_element(recipe.item, "#ingredients")
 Now, we want to obtain all of the itemized items. Find the element type the individual ingredients and pull all of them from `ingredients.section` using `html_elements(...)` (note the added s) and save the results to an object called `ingredients`.<br/>
 **Hint**: You can ask for elements by type by simply specifying the tag (e.g., "p" for paragraph). See `?html_element for a helpful example.
 
+**Solution**
+```{r}
+(ingredients = html_elements(ingredients.section, "li"))
+```
+
 ## Part e
 Similar to Part c. Find the name of the Instructions section of the website and pull the HTML of the function using `html_element(...)` and save the results to an object called `instructions.section`.<br/>
 
+**Solution**
+```{r}
+instructions.section = html_element(recipe.item, "#instructions")
+```
+
 ## Part f
 Now, we want to obtain all of the enumerated items. Find the element type the individual instructions and pull all of them from `instructions.section` using `html_elements(...)` (note the added s) and save the results to an object called `instructions`.
+
+**Solution**
+```{r}
+(instructions = html_elements(instructions.section, "li"))
+```
+
 
 ## Part g
 Find the class of the recipe image and pull the HTML using `html_element(...)` and save the results to an object called `image.element`. <br/>
